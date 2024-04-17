@@ -22,7 +22,8 @@ def read_data(file_name):
                     data[key].append(int(row[key]))
     return data
 
-def selection_sort(numbers, direction="descending"):
+
+def selection_sort(numbers, direction="ascending"):
     for i in range(len(numbers)):
         min_idx = i
         for num_idx in range(i + 1, len(numbers)):
@@ -37,14 +38,23 @@ def selection_sort(numbers, direction="descending"):
         numbers[i], numbers[min_idx] = numbers[min_idx], numbers[i]
     return numbers
 
+def bubble_sort(numbers):
+    for i in range(len(numbers)):
+        number_index = 0
+        for number_index in range(number_index, len(numbers) - 1):
+            if numbers[number_index] > numbers[number_index + 1]:
+                numbers[number_index], numbers[number_index + 1] = numbers[number_index + 1], numbers[number_index]
+                number_index += 1
+            else:
+                number_index += 1
+    return numbers
+
 
 def main():
     numbers = read_data("numbers.csv")
     sorted_series = selection_sort(numbers["series_1"])
-    print(sorted_series)
-
-
-    pass
+    bubble = bubble_sort(numbers["series_2"])
+    print(bubble)
 
 
 if __name__ == '__main__':

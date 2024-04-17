@@ -22,12 +22,18 @@ def read_data(file_name):
                     data[key].append(int(row[key]))
     return data
 
-def selection_sort(numbers):
+def selection_sort(numbers, direction="descending"):
     for i in range(len(numbers)):
         min_idx = i
         for num_idx in range(i + 1, len(numbers)):
-            if numbers[min_idx] > numbers[num_idx]:
-                min_idx = num_idx
+            # aby bylo seřazeno vzestupně
+            if direction == "ascending":
+                if numbers[min_idx] > numbers[num_idx]:
+                    min_idx = num_idx
+            # aby bylo seřazeno sestupně
+            elif direction == "descending":
+                if numbers[min_idx] < numbers[num_idx]:
+                    min_idx = num_idx
         numbers[i], numbers[min_idx] = numbers[min_idx], numbers[i]
     return numbers
 
